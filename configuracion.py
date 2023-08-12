@@ -1,11 +1,10 @@
 import os 
 from dotenv import load_dotenv
 import mysql.connector
-from dotenv import load_dotenv
 import time
 import os 
 
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+script_dir = os.path.dirname(__file__) 
 rel_path = "sql_scripts"
 abs_file_path = os.path.join(script_dir, rel_path)
 

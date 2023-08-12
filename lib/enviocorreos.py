@@ -1,13 +1,15 @@
 from __future__ import print_function
 import base64
 from email.message import EmailMessage
-import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from oauth2client import client, file, tools
-import codecs
+import os
+from dotenv import load_dotenv
 
 SCOPES = "https://www.googleapis.com/auth/gmail.send"
+
+load_dotenv()
+correo_enviar = os.getenv("CORREO")
 
 
 def gmail_send_message(body,correo,creds):
@@ -21,7 +23,7 @@ def gmail_send_message(body,correo,creds):
         message.set_content(body,'html')
 
         message['To'] = correo
-        message['From'] = 'mateo.bernal.bonil@gmail.com'
+        message['From'] = correo_enviar
         message['Subject'] = 'Evaluacion de criticidad archivos'
         
         # encoded message
